@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Lab 1 - Multimedia Programming 2563 ITKMITL</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
 	<link rel=stylesheet href="../src/reset.css">
-	<link rel=stylesheet href="lab.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body class="paper">
-	<div id="app">
-		<input type="number" v-model="n">
-		<input type="number" v-model="a">
+<body class="paper title">
+	<div class="container has-text-centered" id="app">
+		<div class="notification is-info">
+		<h1 class="title ">สูตรคูณ</h1>
+	    
+		<input class="input is-rounded is-dark" type="number" v-model="n">
 		<div class="space"></div>
+		<input class="input is-rounded is-dark" type="number" v-model="a">
+		<div class="space"></div>
+		</div>
+		<div class="notification is-warning">
 		<h3>สูตรคูณแม่ {{n}}</h3>
 		<ul>
-		<li v-for="l in r">{{n}} x {{l}} = <b>{{kun(l)}}</b></li>
-		<h3>ผลรวม {{sum}}</h3>
+		<li v-for="l in r">{{n}} x <i>{{l}}</i> = <b>{{kun(l)}}</b></li>
+		<h3><b>ผลรวม</b> {{sum}}</h3>
 		</ul>
 		</div>
+	</div>
 
 	<script>
 		let app = new Vue({
