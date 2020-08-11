@@ -9,25 +9,38 @@
 <body class="paper">
 	<div id="app">
 		<input type="number" v-model="n">
+		<input type="number" v-model="a">
 		<div class="space"></div>
 		<h3>สูตรคูณแม่ {{n}}</h3>
 		<ul>
-		<li v-for="i in 12">{{n}} x {{i}} = <b>{{kun(i)}}</b></li>
-	</ul>
-	</div>
+		<li v-for="l in r">{{n}} x {{l}} = <b>{{kun(l)}}</b></li>
+		<h3>ผลรวม {{sum}}</h3>
+		</ul>
+		</div>
 
 	<script>
 		let app = new Vue({
 			el: '#app',
 			data: {
-				n: 2,
+				n: 1,
+				a: 12,
 			},
 			methods:{
-				kun: function(il){
-					return this.n*il
+				kun: function(a){
+					return this.n*a
 				}
 			},
 			computed: {
+				r: function(){
+					return parseInt(this.a)
+				},
+				sum: function() {
+					let sum = 0
+					for (let i = 1; i <= this.a; i++) {
+							sum += (this.kun(i))
+						}
+					return sum
+					},
 				x2: function(){
 					return this.n*2
 				}
