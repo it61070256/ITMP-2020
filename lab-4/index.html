@@ -15,17 +15,20 @@
 		</section>
 		<section id="canvas_main">
 			<main>
-			<a-dot v-for="i in row*row" :style="{'--row':row,'--h':h,'--l':l+'%'}"
+			<a-dot v-for="i in row*row" 
+			:style="{
+				'--row':row,
+				'--h':h,
+				'--l':l+'%'
+			}"
 				:data-pick="i == pick"
 				@click="check(i)"
-		
-			></a-dot>
-				
+				></a-dot>
 			</main>
 		</section>
 		<section id="canvas_footer">
 			<div>
-				0 คะแนน
+				{{score}} คะแนน
 			</div>
 		</section>
 	</div>
@@ -42,7 +45,7 @@
 		let app = new Vue({
 			el:'#canvas',
 			data:{
-				row:3, //จำนวนแถวที่จะมีในรอบนี้
+				row:2, //จำนวนแถวที่จะมีในรอบนี้
 				h:200, // hue ในรอบนี้
 				time:20, //เวลาเริ่มต้น
 				score:0, //คะแนนเริ่มต้น
@@ -50,9 +53,15 @@
 				l:50,//ความสว่างของสีทั่วไปในรอบนี้
 			},
 			methods: {
-				check: (e)=>{
+				check: function(e){
 					console.log(e)
+					
 
+				},
+				correct: function(){
+					this.row = rand(2,6)
+					this.pick = rand(1,this.row*this.row)
+					console.log('Correct!')
 				}
 
 			}
