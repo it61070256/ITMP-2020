@@ -71,6 +71,7 @@
 					console.log('Correct!')
 				},
 				incorrect:function(){
+					this.pick = rand(1,this.row*this.row)
 					this.score -= 1
 					this.time -= 1
 					console.log('Incorrect')
