@@ -17,7 +17,7 @@
 			<main>
 			<a-dot v-for="i in row*row" :style="{'--row':row,'--h':h,'--l':l+'%'}"
 				:data-pick="i == pick"
-				@click="check"
+				@click="check(i)"
 		
 			></a-dot>
 				
@@ -52,8 +52,7 @@
 			methods: {
 				check: (e)=>{
 					console.log(e)
-					console.log(e.target)
-					console.log(e.target.dataset.pick)
+
 				}
 
 			}
