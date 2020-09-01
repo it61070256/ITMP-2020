@@ -17,6 +17,7 @@
 			<main>
 			<a-dot v-for="i in row*row" :style="{'--row':row,'--h':h,'--l':l+'%'}"
 				:data-pick="i == pick"
+				@click="check(i == pick)"
 		
 			></a-dot>
 				
@@ -49,6 +50,9 @@
 				l:50,//ความสว่างของสีทั่วไปในรอบนี้
 			},
 			methods: {
+				check: (e)=>{
+					console.log(e)
+				}
 
 			}
 		})
