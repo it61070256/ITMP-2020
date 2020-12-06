@@ -6,6 +6,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<link rel="stylesheet" type="text/css" href="lab.css">
 </head>
+<style type="text/css">
+	*{
+		text-align: center;
+	}
+</style>
 <body>
 	<div id="app">
 		About
@@ -14,8 +19,17 @@
 		<h3>email {{person.email}}</h3>
 		<h3>website {{person.website}}</h3>
 		<h3>company {{person.company.name}}</h3>
+		
+		<button @click="isthisgood">show dog?</button>
+		<h2>{{showdog.answer}}</h2>
+		<img :src="showdog.message" alt="">
+
+		<br>
 		Users
-		<h2 v-for="u in users">{{u.username}}</h2>
+		<h2 v-for="u in users" :data-id="u.id" @click="viewBio(u)">
+			<img :src="`https://picsum.photos/id/7${u.id}/200/300`" alt="">
+			{{u.username}}
+		</h2>
 	</div>
 	
 
@@ -31,7 +45,30 @@
 
 		let app = new Vue({
 			el: '#app',
+			methods:{
+				viewBio: function(user){
+					this.person = user
+					this.showdog = {
+						"answer":"คลิก",
+						"forced":false,
+						"image":""	
+					}
+				},
+				isthisgood: function(){
+					fetch('https://dog.ceo/api/breeds/image/random')
+					.then(response => response.json())
+					.then(json => {
+						console.log(json)
+						app.showdog = json
+					})
+				}
+			},
 			data: {
+				showdog:{
+					"answer":"คลิก",
+					"forced":false,
+					"message":""
+				},
 				person :{ 
     			"id": 1,
     			"name": "Leanne Graham",
